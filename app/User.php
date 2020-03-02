@@ -19,6 +19,8 @@ class User extends Authenticatable
         'name', 'username', 'email', 'password',
     ];
 
+    protected $appends = ['typeName'];
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -36,4 +38,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getTypeNameAttribute()
+    {
+        switch($this->attributes['type'])
+        {
+            case 1: return 'مدیرکل';
+            case 2: return 'مدیر آموزش';
+            case 3: return 'استاد';
+            case 4: return 'دانشجو';
+            default: return 'نامشخص';
+        }
+    }
 }
