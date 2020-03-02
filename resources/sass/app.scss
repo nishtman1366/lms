@@ -1,0 +1,44 @@
+// Fonts
+@import 'font';
+// Variables
+@import 'variables';
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+//@import "fontawesome/font-awesome";
+
+body {
+  direction: rtl;
+  font-family: IRANSans;
+  text-align: right;
+}
+
+th {
+  text-align: center;
+}
+
+.navbar-brand {
+  direction: rtl;
+}
+
+#add__new__item {
+  top: -40px;
+}
+
+.search-result {
+  .title {
+    font-size: 0.9rem;
+  }
+
+  .description {
+    font-size: 0.7rem;
+  }
+}
+
+.file-list-item {
+  display: inline-block;
+  width: 180px;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  vertical-align: middle
+}
