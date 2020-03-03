@@ -38,7 +38,7 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
     Route::prefix('professors')->group(function () {
         Route::get('', 'ProfessorController@index')->name('dashboard.professors.list');
         Route::get('{id}/documents', 'DocumentController@viewByProfessor')->name('dashboard.professors.view_documents');
-
+        Route::get('{id}/classes','ProfessorController@classes')->name('dashboard.professors.view_classes');
         Route::get('new', 'ProfessorController@form')->name('dashboard.professors.new');
         Route::post('', 'ProfessorController@create')->name('dashboard.professors.create');
 
@@ -51,6 +51,7 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
     Route::prefix('lessons')->group(function () {
         Route::get('', 'LessonController@index')->name('dashboard.lessons.list');
         Route::get('{id}/documents', 'DocumentController@viewByLesson')->name('dashboard.lessons.view_documents');
+        Route::get('{id}/classes','LessonController@classes')->name('dashboard.lessons.view_classes');
 
         Route::get('new', 'LessonController@form')->name('dashboard.lessons.new');
         Route::post('', 'LessonController@create')->name('dashboard.lessons.create');
@@ -64,9 +65,9 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
     Route::prefix('classes')->group(function () {
         Route::get('', 'ClassController@index')->name('dashboard.classes.list');
 
-        Route::get('{id}/users', 'ClassesStudentController@viewClassUsers')->name('dashboard.classes.view_users');
-        Route::post('{id}/users', 'ClassesStudentController@addClassUsers')->name('dashboard.classes.add_users');
-        Route::delete('{id}/users', 'ClassesStudentController@deleteClassUsers')->name('dashboard.classes.add_users');
+        Route::get('{id}/students', 'StudentController@index')->name('dashboard.classes.view_students');
+        Route::post('{id}/students', 'StudentController@addStudents')->name('dashboard.classes.add_students');
+        Route::delete('{id}/students', 'StudentController@deleteStudents')->name('dashboard.classes.add_students');
 
         Route::get('new', 'ClassController@form')->name('dashboard.classes.new');
         Route::post('', 'ClassController@create')->name('dashboard.classes.create');

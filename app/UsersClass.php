@@ -8,6 +8,8 @@ class UsersClass extends Model
 {
     protected $table = 'classes';
 
+    protected $fillable = ['name', 'professor_id', 'lesson_id'];
+
     public function professor()
     {
         return $this->hasOne('App\Professor', 'id', 'professor_id');
