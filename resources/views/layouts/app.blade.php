@@ -35,7 +35,7 @@
                             <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="learningDropdown">
                                 <a class="dropdown-item" href="{{ route('dashboard.professors.list') }}">مدیریت اساتید</a>
                                 <a class="dropdown-item" href="{{ route('dashboard.lessons.list') }}">مدیریت دروس</a>
-                                <a class="dropdown-item" href="{{ route('dashboard.documents.list') }}">مدیریت کلاس ها</a>
+                                <a class="dropdown-item" href="{{ route('dashboard.classes.list') }}">مدیریت کلاس ها</a>
                                 <a class="dropdown-item" href="{{ route('dashboard.documents.list') }}">مدیریت جزوات</a>
                             </div>
                         </li>

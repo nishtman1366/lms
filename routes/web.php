@@ -61,6 +61,22 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
         Route::get('{id}/delete', 'LessonController@delete')->name('dashboard.lessons.delete');
     });
 
+    Route::prefix('classes')->group(function () {
+        Route::get('', 'ClassController@index')->name('dashboard.classes.list');
+
+        Route::get('{id}/users', 'ClassesStudentController@viewClassUsers')->name('dashboard.classes.view_users');
+        Route::post('{id}/users', 'ClassesStudentController@addClassUsers')->name('dashboard.classes.add_users');
+        Route::delete('{id}/users', 'ClassesStudentController@deleteClassUsers')->name('dashboard.classes.add_users');
+
+        Route::get('new', 'ClassController@form')->name('dashboard.classes.new');
+        Route::post('', 'ClassController@create')->name('dashboard.classes.create');
+
+        Route::get('{id}/edit', 'ClassController@form')->name('dashboard.classes.edit');
+        Route::post('{id}', 'ClassController@update')->name('dashboard.classes.update');
+
+        Route::get('{id}/delete', 'ClassController@delete')->name('dashboard.classes.delete');
+    });
+
     Route::prefix('users')->group(function () {
         Route::get('', 'UserController@index')->name('dashboard.users.list');
     });
