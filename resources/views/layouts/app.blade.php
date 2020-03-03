@@ -25,18 +25,22 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 @auth
-                    <ul class="navbar-nav mr-auto">
+                    <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('dashboard') }}">صفحه اصلی</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('dashboard.professors.list') }}">لیست اساتید</a>
+                        <li class="nav-item dropdown">
+                            <a id="learningDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>آموزش</a>
+                            <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="learningDropdown">
+                                <a class="dropdown-item" href="{{ route('dashboard.professors.list') }}">مدیریت اساتید</a>
+                                <a class="dropdown-item" href="{{ route('dashboard.lessons.list') }}">مدیریت دروس</a>
+                                <a class="dropdown-item" href="{{ route('dashboard.documents.list') }}">مدیریت کلاس ها</a>
+                                <a class="dropdown-item" href="{{ route('dashboard.documents.list') }}">مدیریت جزوات</a>
+                            </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('dashboard.lessons.list') }}">لیست دروس</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('dashboard.documents.list') }}">لیست جزوات</a>
+                            <a class="nav-link" href="{{ route('dashboard.users.list') }}">مدیریت کاربران</a>
                         </li>
                     </ul>
             @endauth
@@ -47,11 +51,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">ورود به سیستم</a>
                         </li>
-                        {{--                        @if (Route::has('register'))--}}
-                        {{--                            <li class="nav-item">--}}
-                        {{--                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>--}}
-                        {{--                            </li>--}}
-                        {{--                        @endif--}}
                     @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
