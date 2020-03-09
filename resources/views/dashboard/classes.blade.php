@@ -2,10 +2,14 @@
 
 @section('content')
     <div class="card">
-        <a href="{{route('dashboard.classes.new')}}" id="add__new__item" type="button"
-           class="btn btn-success position-absolute"><i class="fas fa-plus"></i>ثبت کلاس جدید</a>
         <table class="table table-hover">
             <thead>
+            <tr>
+                <td colspan="6">
+                    <a href="{{route('dashboard.classes.new')}}" id="add__new__item" type="button"
+                       class="btn btn-success"><i class="fa fa-plus p-1"></i>ثبت کلاس جدید</a>
+                </td>
+            </tr>
             <tr>
                 <th scope="col">ردیف</th>
                 <th scope="col">نام کلاس</th>
@@ -33,10 +37,10 @@
                     <td class="text-center">
                         <a class="btn btn-sm btn-primary"
                            href="{{route('dashboard.classes.edit',['id'=>$class->id])}}"><i
-                                class="fas fa-edit"></i>ویرایش</a>
+                                    class="fa fa-edit p-1"></i></a>
                         <a class="btn btn-sm btn-danger"
                            href="{{route('dashboard.classes.delete',['id'=>$class->id])}}"><i
-                                class="fas fa-trash-alt"></i>حذف</a>
+                                    class="fa fa-trash p-1"></i></a>
                     </td>
                 </tr>
                 @php($i++)

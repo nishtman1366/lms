@@ -29,7 +29,9 @@ class FileController extends Controller
     public function download(Request $request)
     {
         $fileId = $request->route('id');
-        $file = File::where('id', $fileId)->get()->first();
+        $file = File::find($fileId);
+        //TODO add download statictics to system
+//        $file->increment('download_count');
         return redirect()->to($file->url);
     }
 

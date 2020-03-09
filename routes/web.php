@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'HomeController@index');
 Route::post('search', 'HomeController@searchResults')->name('search');
 Route::get('documents/{id}', 'HomeController@viewDocument')->name('view_document');
 Route::get('{id}/download', 'FileController@download')->name('download');

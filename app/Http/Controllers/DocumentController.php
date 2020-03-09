@@ -36,7 +36,7 @@ class DocumentController extends Controller
             'lesson_id' => 'required',
         ]);
         $document = Document::create($request->all());
-        $files = $request->file('files');
+        $files = $request->file('files', []);
         FileController::uploadFiles($files, $document);
 
         return redirect()->route('dashboard.documents.list')->withInput(['message' => 'با موفقیت انجام شد.']);
@@ -56,7 +56,7 @@ class DocumentController extends Controller
                 return redirect()->back()->withErrors(['message' => 'جزوه مورد نظر یافت نشد']);
             $document->fill($request->all());
             $document->save();
-            $files = $request->file('files');
+            $files = $request->file('files', []);
             FileController::uploadFiles($files, $document);
             $deleteFiles = $request->get('deleteFiles', []);
             if (count($deleteFiles) > 0)
