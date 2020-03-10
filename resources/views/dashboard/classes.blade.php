@@ -8,6 +8,7 @@
                 <td colspan="6">
                     <a href="{{route('dashboard.classes.new')}}" id="add__new__item" type="button"
                        class="btn btn-success"><i class="fa fa-plus p-1"></i>ثبت کلاس جدید</a>
+
                 </td>
             </tr>
             <tr>

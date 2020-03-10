@@ -1,35 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Dashboard</div>
-
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-12 col-md-6">
-                                <a href="{{route('dashboard.professors.list')}}" class="btn btn-primary">
-                                    لیست اساتید
-                                </a>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <a href="{{route('dashboard.lessons.list')}}" class="btn btn-primary">
-                                لیست دروس
-                                </a>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <a href="{{route('dashboard.documents.list')}}" class="btn btn-primary">
-                                    لیست جزوات
-                                </a>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <a href="{{route('dashboard.users.list')}}" class="btn btn-primary">
-                                    لیست کاربران
-                                </a>
-                            </div>
-                        </div>
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">Dashboard</div>
+                <div class="card-body row">
+                    <div class="col-12 col-md-4">
+                        <h3>کلاس های شما</h3>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ردیف</th>
+                                    <th>نام کلاس</th>
+                                    <th>تعداد دانشجویان</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center">1</td>
+                                    <td class="text-center">درس فلان و بیسار</td>
+                                    <td class="text-center">26</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

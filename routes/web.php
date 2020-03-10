@@ -10,7 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('info',function(){
+    phpinfo();
+});
 Route::get('/', 'HomeController@index');
 Route::post('search', 'HomeController@searchResults')->name('search');
 Route::get('documents/{id}', 'HomeController@viewDocument')->name('view_document');
@@ -37,6 +39,8 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
         Route::get('', 'ProfessorController@index')->name('dashboard.professors.list');
         Route::get('{id}/documents', 'DocumentController@viewByProfessor')->name('dashboard.professors.view_documents');
         Route::get('{id}/classes','ProfessorController@classes')->name('dashboard.professors.view_classes');
+
+        Route::post('upload','ProfessorController@upload')->name('dashboard.professors.upload');
         Route::get('new', 'ProfessorController@form')->name('dashboard.professors.new');
         Route::post('', 'ProfessorController@create')->name('dashboard.professors.create');
 
@@ -54,6 +58,7 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
         Route::get('new', 'LessonController@form')->name('dashboard.lessons.new');
         Route::post('', 'LessonController@create')->name('dashboard.lessons.create');
 
+        Route::post('upload','LessonController@upload')->name('dashboard.lessons.upload');
         Route::get('{id}/edit', 'LessonController@form')->name('dashboard.lessons.edit');
         Route::post('{id}', 'LessonController@update')->name('dashboard.lessons.update');
 
@@ -78,5 +83,14 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
 
     Route::prefix('users')->group(function () {
         Route::get('', 'UserController@index')->name('dashboard.users.list');
+
+        Route::get('new', 'UserController@form')->name('dashboard.users.new');
+        Route::post('', 'UserController@create')->name('dashboard.users.create');
+        Route::post('upload','UserController@upload')->name('dashboard.users.upload');
+
+        Route::get('{id}/edit', 'UserController@form')->name('dashboard.users.edit');
+        Route::post('{id}', 'UserController@update')->name('dashboard.users.update');
+
+        Route::delete('{id}/delete', 'UserController@index')->name('dashboard.users.delete');
     });
 });

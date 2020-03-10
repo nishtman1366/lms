@@ -24,8 +24,7 @@
             @php($i=1)
             @foreach($users as $user)
                 <tr>
-                    <th scope="row"><input class="form-check" type="checkbox" name="user_id[]" value="{{$user->id}}">
-                    </th>
+                    <th scope="row"><input class="form-check" type="checkbox" name="user_id[]" value="{{$user->id}}"></th>
                     <th scope="row">{{$i}}</th>
                     <td class="text-center">{{$user->name}}</td>
                     <td class="text-center">{{$user->username}}</td>
@@ -34,6 +33,11 @@
                 </tr>
                 @php($i++)
             @endforeach
+            <tr>
+                <td colspan="6">
+                    {{$users->links()}}
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>

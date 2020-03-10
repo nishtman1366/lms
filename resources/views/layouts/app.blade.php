@@ -77,7 +77,7 @@
 
         </nav>
     </div>
-    <div class="container my-5">
+    <div class="container-fluid my-5">
         @if(!is_null(old('message')))
             <div class="alert alert-{{!is_null(old('messageType')) ? old('messageType') : 'success'}} my-5">
                 {{old('message')}}

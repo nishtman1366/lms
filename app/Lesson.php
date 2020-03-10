@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lesson extends Model
 {
-    public $fillable = ['name'];
+    public $fillable = ['name', 'code'];
 
     public function documents()
     {

@@ -5,10 +5,11 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable,HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -16,10 +17,15 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'username', 'email', 'password',
+        'first_name', 'last_name', 'national_code', 'username', 'email', 'password',
     ];
 
-    protected $appends = ['typeName'];
+    protected $appends = ['name'];
+
+    public function getNameAttribute()
+    {
+        return $this->attributes['first_name'] . ' ' . $this->attributes['last_name'];
+    }
 
     /**
      * The attributes that should be hidden for arrays.
@@ -27,27 +33,6 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
     ];
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
-
-    public function getTypeNameAttribute()
-    {
-        switch($this->attributes['type'])
-        {
-            case 1: return 'مدیرکل';
-            case 2: return 'مدیر آموزش';
-            case 3: return 'استاد';
-            case 4: return 'دانشجو';
-            default: return 'نامشخص';
-        }
-    }
 }

@@ -43,6 +43,24 @@ class LessonController extends Controller
         return redirect()->route('dashboard.lessons.list');
     }
 
+    public function upload(Request $request)
+    {
+        $uploadedFile = $request->file('lessons_file')->store('temp');
+        $file = fopen(storage_path('app' . DIRECTORY_SEPARATOR . $uploadedFile), "r");
+        while (!feof($file)) {
+            $data = fgets($file);
+            $d = explode(',', $data);
+            if (key_exists(2, $d) && key_exists(3, $d)) {
+                Lesson::updateOrCreate([
+                    'name' => $d[2],
+                    'code' => $d[3]
+                ]);
+            }
+        }
+        fclose($file);
+        return redirect()->route('dashboard.lessons.list')->withInput(['message' => 'با موفقیت انجام شد.']);
+    }
+
     public function delete(Request $request)
     {
         $lessonId = $request->route('id', null);
