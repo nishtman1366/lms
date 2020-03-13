@@ -11,10 +11,8 @@ class FileController extends Controller
 {
     public static function uploadFiles(array $files, $document)
     {
-        $professorId = $document->professor_id;
-        $lessonId = $document->lesson_id;
         foreach ($files as $file) {
-            $fileName = $professorId . '_' . $lessonId . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+            $fileName = str_replace(' ', '_', $file->getClientOriginalName());
             $file->storeAs('documents/'.$document->id, $fileName, 'public');
             File::create(
                 [

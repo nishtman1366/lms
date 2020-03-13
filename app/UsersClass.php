@@ -12,7 +12,7 @@ class UsersClass extends Model
 
     public function professor()
     {
-        return $this->hasOne('App\Professor', 'id', 'professor_id');
+        return $this->hasOne('App\User', 'id', 'professor_id');
     }
 
     public function lesson()
@@ -23,5 +23,10 @@ class UsersClass extends Model
     public function students()
     {
         return $this->hasMany('App\ClassesStudent', 'class_id', 'id');
+    }
+
+    public function documents()
+    {
+        return $this->hasMany('App\ClassesDocument', 'class_id', 'id');
     }
 }

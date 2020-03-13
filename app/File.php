@@ -8,7 +8,7 @@ class File extends Model
 {
     protected $fillable = ['document_id', 'name', 'size'];
 
-    protected $appends = ['url'];
+    protected $appends = ['url','fileSize'];
 
     public function getUrlAttribute()
     {
@@ -25,6 +25,6 @@ class File extends Model
         $size = array('بایت', 'کیلوبایت', 'مگابایت', 'گیگابایت', 'ترابایت', 'PB', 'EB', 'ZB', 'YB');
         $factor = floor((strlen($bytes) - 1) / 3);
 
-        return sprintf("%.{$dec}f", $bytes / pow(1024, $factor)) . @$size[$factor];
+        return sprintf("%.{$dec}f", $bytes / pow(1024, $factor)) .' '. @$size[$factor];
     }
 }

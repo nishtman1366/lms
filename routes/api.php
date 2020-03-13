@@ -16,3 +16,12 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::prefix('classes')->group(function () {
+    Route::prefix('{id}')->group(function () {
+        Route::prefix('documents')->group(function () {
+            Route::get('{documentId}/files', 'ClassesDocumentController@viewFiles')->name('api.dashboard.classes.documents.files.list');
+            Route::delete('{documentId}', 'ClassesDocumentController@delete')->name('api.dashboard.classes.documents.delete');
+        });
+    });
+});

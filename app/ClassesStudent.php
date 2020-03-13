@@ -10,4 +10,9 @@ class ClassesStudent extends Model
     {
         return $this->hasOne('App\User', 'id', 'user_id');
     }
+
+    public function StudentClass()
+    {
+        return $this->hasOne('App\UsersClass', 'id', 'class_id');
+    }
 }

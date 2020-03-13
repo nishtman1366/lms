@@ -6,6 +6,7 @@ use App\Lesson;
 use App\Professor;
 use App\UsersClass;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ClassController extends Controller
 {
@@ -56,5 +57,14 @@ class ClassController extends Controller
             return redirect()->route('dashboard.classes.list')->withInput(['message' => 'با موفقیت انجام شد.']);
         }
         return redirect()->route('dashboard.classes.list');
+    }
+
+    public function viewClass(Request $request)
+    {
+        $id = $request->route('id', null);
+        if (is_null($id)) throw new NotFoundHttpException('اطلاعات وراد شده اشتباه است');
+        $class = UsersClass::with('documents')->where('id', $id)->get()->first();
+
+        return view('dashboard.classes.view_class', compact('class'));
     }
 }
